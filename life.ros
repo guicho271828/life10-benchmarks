@@ -67,9 +67,9 @@ exec ros -Q -- $0 "$@"
                        (aref* b down left)
                        (aref* b i   left))))
               (setf (aref* nextb i j)
-                    (cond
-                      ((= 2 count) (aref* b i j))
-                      ((= 3 count) 1)
+                    (case count
+                      (2 (aref* b i j))
+                      (3 1)
                       (t 0)))))))
       (rotatef b nextb))
     (format t "After ~a generations:~%" g)
