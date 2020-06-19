@@ -14,7 +14,7 @@ exec ros -Q -- $0 "$@"
   `(aref ,array (+ (* ,i ,m) ,j)))
 
 (defun display (b)
-  (declare ((simple-array bit (#.(* n m))) b))
+  (declare ((simple-array (unsigned-byte 8) (#.(* n m))) b))
   (dotimes (i n)
     (dotimes (j m)
       (if (zerop (aref* b i j))
@@ -25,9 +25,9 @@ exec ros -Q -- $0 "$@"
 
 (defun main (&rest argv)
   (declare (ignorable argv))
-  (let ((b (make-array (* n m) :element-type 'bit))
-        (nextb (make-array (* n m) :element-type 'bit)))
-    (declare ((simple-array bit (#.(* n m))) b nextb))
+  (let ((b     (make-array (* n m) :element-type '(unsigned-byte 8)))
+        (nextb (make-array (* n m) :element-type '(unsigned-byte 8))))
+    (declare ((simple-array (unsigned-byte 8) (#.(* n m))) b nextb))
     (setf (aref* b 19 41) 1)
     (setf (aref* b 20 40) 1)
     (setf (aref* b 21 40) 1)
