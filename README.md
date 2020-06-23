@@ -94,6 +94,10 @@ Examples of command line to run:
 
       csc -C -O3 life.scm && time ./life; rm -f life
 
+* Common Lisp (with Roswell)
+
+  ros dump executable  --disable-compression life.ros -o life ; time ./life ; rm life
+
 * MANOOL:
 
       time MNL_PATH=~/manool/build/lib ~/manool/build/mnlexec life.mnl
